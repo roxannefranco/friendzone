@@ -9,12 +9,12 @@
     <link rel="stylesheet" href="css/styles.css" />
 </head>
 
-<body>
+<body class="vh-100 d-flex align-items-center">
     <div class="container">
         <div class="row align-items-start justify-content-evenly">
-            <div class="col-8">
-                <form class="bg-secondary rounded-2 p-6 mt-5">
-                    <div class="d-flex justify-content-evenly m-5">
+            <div class="col-12 col-lg-8">
+                <form action="feed.html" class="bg-secondary rounded-2 p-4 p-sm-6">
+                    <div class="d-flex justify-content-evenly mx-1 mx-sm-5 my-5">
                         <svg class="fill-primary" height="36" viewBox="0 0 1126 260" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" clip-rule="evenodd"
@@ -68,13 +68,13 @@
                             <div class="input-group-text">
                                 <i class="bi bi-lock-fill"></i>
                             </div>
-                            <input required type="text" class="form-control" id="inlineFormInputGroupUsername"
-                                placeholder="Password">
+                            <input required type="text" minlength="8" class="form-control"
+                                id="inlineFormInputGroupUsername" placeholder="Password">
                         </div>
                     </div>
                     <!-- Submit button -->
                     <div class="d-grid">
-                        <a href="feed.html" class="btn btn-primary btn-lg mt-2">Login</a>
+                        <button type="submit" class="btn btn-primary btn-lg mt-2">Login</button>
                     </div>
                 </form>
             </div>
