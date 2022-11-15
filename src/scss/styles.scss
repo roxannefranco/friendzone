@@ -1,0 +1,17 @@
+@import "./variables";
+
+// Import bootstrap
+@import "../../node_modules/bootstrap/scss/bootstrap";
+@import "../../node_modules/bootstrap-icons/font/bootstrap-icons.scss";
+
+
+// Then add additional custom code here
+
+.fill-primary path {
+  fill: $primary;
+}
+
+.no-resize{
+    resize: none;
+}
+
