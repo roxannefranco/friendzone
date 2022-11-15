@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "npx tailwindcss -i ./src/scss/styles.scss -o ./css/styles.css",
-    "watch": "npx tailwindcss -i ./src/scss/styles.scss -o ./css/styles.css --watch & live-server"
+    "build": "npx tailwindcss build -i ./src/css/styles.css -o ./css/styles.css",
+    "watch": "npx tailwindcss build -i ./src/css/styles.css -o ./css/styles.css --watch"
   },
   "repository": {
     "type": "git",
