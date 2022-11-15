@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "sass src/scss:css",
-    "watch": "sass --watch src/scss:css & live-server"
+    "build": "npx tailwindcss -i ./src/scss/styles.scss -o ./css/styles.css",
+    "watch": "npx tailwindcss -i ./src/scss/styles.scss -o ./css/styles.css --watch & live-server"
   },
   "repository": {
     "type": "git",
@@ -19,6 +19,7 @@
   "homepage": "https://github.com/roxannefranco/friendzone#readme",
   "devDependencies": {
     "live-server": "^1.2.2",
-    "sass": "^1.55.0"
+    "sass": "^1.55.0",
+    "tailwindcss": "^3.2.4"
   }
 }
