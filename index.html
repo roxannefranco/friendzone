@@ -12,7 +12,7 @@
 <body class="h-screen flex items-center justify-center">
 
     <div class="bg-neutral-200 px-12 py-8 rounded-md w-full md:w-auto mx-8">
-        <form action="feed.html" class="">
+        <form action="feed.html" id="login-form">
             <div class="py-5 flex justify-center">
                 <svg height="36" viewBox="0 0 1126 260" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" clip-rule="evenodd"
@@ -50,7 +50,7 @@
                         class="fill-orange-300" />
                 </svg></a>
             </div>
-            <!-- Username input -->
+            <!-- Email input -->
             <div class="relative">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="currentColor" class="w-6 h-6 absolute left-2 top-2">
@@ -58,9 +58,9 @@
                         d="M16.5 12a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0zm0 0c0 1.657 1.007 3 2.25 3S21 13.657 21 12a9 9 0 10-2.636 6.364M16.5 12V8.25" />
                 </svg>
 
-                <input required type="text"
+                <input id="email-login" required type="email"
                     class="w-full pl-10 pr-3 py-2 mb-2 rounded-md border border-neutral-300 focus:outline focus:outline-orange-100 focus:border-orange-300"
-                    id="inlineFormInputGroupUsername" placeholder="Username">
+                    id="inlineFormInputGroupUsername" placeholder="Email">
             </div>
             <!-- Password input -->
             <div class="relative">
@@ -70,10 +70,12 @@
                         d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
                 </svg>
 
-                <input required type="text" minlength="8"
+                <input id="password-login" required type="password" minlength="8"
                     class="w-full pl-10 pr-3 py-2 rounded-md border border-neutral-300 focus:outline focus:outline-orange-100 focus:border-orange-300"
                     id="inlineFormInputGroupUsername" placeholder="Password">
             </div>
+            <!-- Errors -->
+            <div id="errors-login" class="hidden text-red-500 mt-3 font-bold">Errors here</div>
             <!-- Submit button -->
             <button
                 class="bg-orange-300 py-3 px-6 block w-full rounded-md text-white font-bold mt-3 hover:bg-orange-500 transition-all duration-200"
