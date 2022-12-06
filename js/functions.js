@@ -13,3 +13,9 @@ export function checkNotAuth() {
     window.location.replace("/login.html");
   }
 }
+
+export function signOut() {
+  localStorage.removeItem("accessToken");
+  // when removing token user is redirected to login
+  window.location.replace("/login.html");
+}
