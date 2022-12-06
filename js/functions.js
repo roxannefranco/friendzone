@@ -1,3 +1,6 @@
+/**
+ * Checks if User is logged in
+ */
 export function checkAuth() {
   const token = localStorage.getItem("accessToken");
   if (token != null) {
@@ -6,6 +9,9 @@ export function checkAuth() {
   }
 }
 
+/**
+ * Cheks if user is not logged in
+ */
 export function checkNotAuth() {
   const token = localStorage.getItem("accessToken");
   if (token == null) {
@@ -14,8 +20,11 @@ export function checkNotAuth() {
   }
 }
 
+/**
+ * Removes token and signs out the user
+ */
 export function signOut() {
   localStorage.removeItem("accessToken");
-  // when removing token user is redirected to login
+  // after removing token user is redirected to login
   window.location.replace("/login.html");
 }

@@ -13,7 +13,9 @@ form.onsubmit = function (event) {
   logInUser();
 };
 
-// check if inputs match registrated user data
+/**
+ * Check if inputs match registrated user data
+ */
 async function logInUser() {
   const emailLogin = document.querySelector("#email-login");
   const passwordLogin = document.querySelector("#password-login");

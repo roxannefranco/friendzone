@@ -22,7 +22,9 @@ form.onsubmit = function (event) {
   }
 };
 
-// Register new User
+/**
+ * Register new User
+ */
 async function registerNew() {
   const username = document.querySelector("#username");
   const email = document.querySelector("#email");
