@@ -1,4 +1,7 @@
 import { url } from "./config.js";
+import { checkAuth } from "./functions.js";
+
+checkAuth();
 
 const form = document.querySelector("#login-form");
 
@@ -31,5 +34,6 @@ async function logInUser() {
   // set token to local storage
   const accessToken = response.accessToken;
   localStorage.setItem("accessToken", accessToken);
-  console.log(json);
+  // redirecting login to feed page
+  window.location.replace("/index.html");
 }

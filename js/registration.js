@@ -1,4 +1,7 @@
 import { url } from "./config.js";
+import { checkAuth } from "./functions.js";
+
+checkAuth();
 
 const form = document.querySelector("#registration-form");
 
@@ -40,4 +43,5 @@ async function registerNew() {
   const response = await info.json();
   console.log(response);
   // if response is ok redirect to log in page
+  window.location.replace("/login.html");
 }
