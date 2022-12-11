@@ -45,6 +45,12 @@ function addPosts(posts) {
       avatar = post.author.avatar;
     }
 
+    // check if post has media to display
+    let media = "";
+    if (post.media !== "" && post.media != null) {
+      media = `<img class="mb-2 rounded-md" src="${post.media}">`;
+    }
+
     postContainer.innerHTML += `<div class="mt-4 border border-neutral-300 rounded-md p-3">
     <div class="flex items-center">
         <a href="profile.html">
@@ -54,6 +60,7 @@ function addPosts(posts) {
     </div>
     <p class="text-neutral-800 mt-2 font-medium text-lg">${post.title}</p>
     <p class="text-neutral-600 mb-2">${post.body}</p>
+    ${media}
     <div class="flex items-center mb-2">
     ${tagsGenerator(post.tags)}
     </div>
@@ -84,6 +91,7 @@ async function newPost() {
   const title = document.querySelector("#title-post");
   const body = document.querySelector("#body-post");
   const tags = document.querySelector("#tags-post");
+  const media = document.querySelector("#media-post");
 
   // split tags by comma and loop through each tag to trim extra spaces
   const tagsList = tags.value.split(",").map(function (tag) {
@@ -94,7 +102,7 @@ async function newPost() {
     title: title.value,
     body: body.value,
     tags: tagsList,
-    media: "",
+    media: media.value,
   };
   let info = await fetch(`${url}/posts`, {
     method: "POST",
