@@ -5,5 +5,10 @@ module.exports = {
     extend: {},
   },
   plugins: [],
-  safelist: ["border-orange-300", "object-cover", "px-2"],
+  safelist: [
+    "border-orange-300",
+    "object-cover",
+    "hover:bg-neutral-100",
+    "px-2",
+  ],
 };
