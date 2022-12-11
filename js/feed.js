@@ -121,6 +121,9 @@ async function newPost() {
   getPosts();
 }
 
+/**
+ * Handle search input
+ */
 const search = document.querySelector("#search");
 search.oninput = function () {
   // convert all searches to lower case
@@ -138,3 +141,33 @@ search.oninput = function () {
     addPosts(allPosts);
   }
 };
+
+// Handle filter select
+const tagFilter = document.querySelector("#tag-filter");
+tagFilter.onchange = function () {
+  const selectedTag = tagFilter.value;
+  if (selectedTag == 0) {
+    getPosts();
+  } else {
+    getPostsByTag(selectedTag);
+  }
+};
+
+/**
+ * Get posts by tag
+ */
+async function getPostsByTag(tag) {
+  const response = await fetch(
+    `${url}/posts?_author=true&_reactions=true&_tag=${tag}`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: getToken(),
+      },
+    }
+  );
+  const data = await response.json();
+  allPosts = data;
+  addPosts(allPosts);
+}
