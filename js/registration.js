@@ -36,7 +36,7 @@ async function registerNew() {
     avatar: avatar.value,
     password: password.value,
   };
-  console.log(data);
+
   let info = await fetch(`${url}/auth/register`, {
     method: "POST",
     body: JSON.stringify(data),
@@ -45,7 +45,7 @@ async function registerNew() {
     },
   });
   const response = await info.json();
-  console.log(response);
+
   // if response is ok redirect to log in page
   window.location.replace("/login.html");
 }

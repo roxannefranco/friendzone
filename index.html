@@ -76,9 +76,19 @@
     </nav>
     <div class="w-full max-w-screen-md mx-auto px-4">
         <!--POST FORM-->
-        <form action="index.html" class="bg-neutral-200 p-4 mt-24">
-            <textarea required maxlength=" 280" rows="3" class="w-full resize-none px-3 py-2 rounded"
+        <form id="posts-form" action="index.html" class="bg-neutral-200 p-4 mt-24">
+            <!--Title input-->
+            <input id="title-post" required type="text"
+                class="w-full px-3 py-2 mb-2 rounded-md border border-neutral-300 focus:outline focus:outline-orange-100 focus:border-orange-300"
+                placeholder="Title">
+            <textarea id="body-post" maxlength=" 280" rows="3"
+                class="resize-none w-full px-3 py-2 mb-2 rounded-md border border-neutral-300 focus:outline focus:outline-orange-100 focus:border-orange-300"
                 placeholder="What's on your mind..."></textarea>
+            <!--Tags input-->
+            <input id="tags-post" type="text"
+                class="w-full px-3 py-2 mb-2 rounded-md border border-neutral-300 focus:outline focus:outline-orange-100 focus:border-orange-300"
+                placeholder="Tags (optional, comma separated)">
+            <div id="errors"></div>
             <button type="submit"
                 class="bg-orange-300 py-3 px-6 inline-block rounded-md text-white font-bold mt-3 hover:bg-orange-500 transition-all duration-200">Publish</button>
         </form>

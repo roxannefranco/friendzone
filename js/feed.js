@@ -37,6 +37,7 @@ async function getPosts() {
  */
 function addPosts(posts) {
   const postContainer = document.querySelector("#posts-container");
+  postContainer.innerHTML = "";
   posts.forEach(function (post) {
     // check if user uploaded avatar
     let avatar = "images/noavatar.jpg";
@@ -64,3 +65,47 @@ function addPosts(posts) {
 }
 
 getPosts();
+
+const form = document.querySelector("#posts-form");
+
+form.onsubmit = function (event) {
+  // prevention default submission occurs'
+  event.preventDefault();
+  // select and hidde errors container
+  const errorsContainer = document.querySelector("#errors");
+  errorsContainer.classList.add("hidden");
+  newPost();
+};
+
+/**
+ * Publish new post
+ */
+async function newPost() {
+  const title = document.querySelector("#title-post");
+  const body = document.querySelector("#body-post");
+  const tags = document.querySelector("#tags-post");
+
+  // split tags by comma and loop through each tag to trim extra spaces
+  const tagsList = tags.value.split(",").map(function (tag) {
+    return tag.trim();
+  });
+
+  const data = {
+    title: title.value,
+    body: body.value,
+    tags: tagsList,
+    media: "",
+  };
+  let info = await fetch(`${url}/posts`, {
+    method: "POST",
+    body: JSON.stringify(data),
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: getToken(),
+    },
+  });
+
+  const response = await info.json();
+  form.reset();
+  getPosts();
+}
