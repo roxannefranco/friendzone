@@ -1,4 +1,7 @@
 import { url } from "./config.js";
+import { checkAuth } from "./functions.js";
+
+checkAuth();
 
 const form = document.querySelector("#login-form");
 
@@ -10,7 +13,9 @@ form.onsubmit = function (event) {
   logInUser();
 };
 
-// check if inputs match registrated user data
+/**
+ * Check if inputs match registrated user data
+ */
 async function logInUser() {
   const emailLogin = document.querySelector("#email-login");
   const passwordLogin = document.querySelector("#password-login");
@@ -18,7 +23,6 @@ async function logInUser() {
     email: emailLogin.value,
     password: passwordLogin.value,
   };
-  console.log(data);
   let info = await fetch(`${url}/auth/login`, {
     method: "POST",
     body: JSON.stringify(data),
@@ -31,5 +35,7 @@ async function logInUser() {
   // set token to local storage
   const accessToken = response.accessToken;
   localStorage.setItem("accessToken", accessToken);
-  console.log(json);
+  localStorage.setItem("user", JSON.stringify(response));
+  // redirecting login to feed page
+  window.location.replace("/index.html");
 }
