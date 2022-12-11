@@ -23,7 +23,6 @@ async function logInUser() {
     email: emailLogin.value,
     password: passwordLogin.value,
   };
-  console.log(data);
   let info = await fetch(`${url}/auth/login`, {
     method: "POST",
     body: JSON.stringify(data),
@@ -36,6 +35,7 @@ async function logInUser() {
   // set token to local storage
   const accessToken = response.accessToken;
   localStorage.setItem("accessToken", accessToken);
+  localStorage.setItem("user", JSON.stringify(response));
   // redirecting login to feed page
   window.location.replace("/index.html");
 }

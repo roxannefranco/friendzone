@@ -5,9 +5,11 @@ import {
   getToken,
   reactionGenerator,
   tagsGenerator,
+  replaceAvatar,
 } from "./functions.js";
 
 checkNotAuth();
+replaceAvatar();
 
 const signOutBtn = document.querySelector("#sign-out-btn");
 

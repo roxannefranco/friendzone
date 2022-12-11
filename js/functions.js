@@ -8,6 +8,27 @@ export function getToken() {
 }
 
 /**
+ * Get user
+ * @returns {object} user
+ */
+export function getUser() {
+  const user = localStorage.getItem("user");
+  // parses user string to object
+  return JSON.parse(user);
+}
+
+/**
+ * Replace user's avatar if one was provided
+ */
+export function replaceAvatar() {
+  const user = getUser();
+  if (user.avatar != null && user.avatar != "") {
+    const currentAvatar = document.querySelector("#current-avatar");
+    currentAvatar.src = user.avatar;
+  }
+}
+
+/**
  * Checks if User is logged in
  */
 export function checkAuth() {

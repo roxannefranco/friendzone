@@ -28,10 +28,12 @@ form.onsubmit = function (event) {
 async function registerNew() {
   const username = document.querySelector("#username");
   const email = document.querySelector("#email");
+  const avatar = document.querySelector("#avatar");
   const password = document.querySelector("#password");
   const data = {
     name: username.value,
     email: email.value,
+    avatar: avatar.value,
     password: password.value,
   };
   console.log(data);
