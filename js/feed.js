@@ -16,6 +16,8 @@ const signOutBtn = document.querySelector("#sign-out-btn");
 // when clicked user signs out
 signOutBtn.onclick = signOut;
 
+let allPosts = [];
+
 /**
  * Fetch posts
  */
@@ -28,7 +30,8 @@ async function getPosts() {
     },
   });
   const data = await response.json();
-  addPosts(data);
+  allPosts = data;
+  addPosts(allPosts);
 }
 
 /**
@@ -117,3 +120,21 @@ async function newPost() {
   form.reset();
   getPosts();
 }
+
+const search = document.querySelector("#search");
+search.oninput = function () {
+  // convert all searches to lower case
+  const term = search.value.toLowerCase();
+  if (term != "") {
+    const filteredPosts = allPosts.filter(function (post) {
+      // check if post title includes term and returns true if yes and false if no
+      return (
+        post.title.toLowerCase().includes(term) ||
+        (post.body != null && post.body.toLowerCase().includes(term))
+      );
+    });
+    addPosts(filteredPosts);
+  } else {
+    addPosts(allPosts);
+  }
+};
