@@ -1,4 +1,13 @@
 /**
+ * Get token
+ * @returns {string} token - prefixed access token to authorize users
+ */
+export function getToken() {
+  const token = localStorage.getItem("accessToken");
+  return `Bearer ${token}`;
+}
+
+/**
  * Checks if User is logged in
  */
 export function checkAuth() {
@@ -27,4 +36,39 @@ export function signOut() {
   localStorage.removeItem("accessToken");
   // after removing token user is redirected to login
   window.location.replace("/login.html");
+}
+
+/**
+ * Generates reactions HTML
+ * @param {array} reactions
+ * @returns {string}
+ */
+export function reactionGenerator(reactions) {
+  let structure = "";
+  reactions.forEach(function (reaction) {
+    structure += `
+      <div class="border border-orange-300 rounded-md mr-2 px-2">
+        ${reaction.symbol}
+        ${reaction.count}
+      </div>
+    `;
+  });
+  return structure;
+}
+
+/**
+ * Generates tags HTML
+ * @param {array} tags
+ * @returns {string}
+ */
+export function tagsGenerator(tags) {
+  let structure = "";
+  tags.forEach(function (tag) {
+    structure += `
+  <div class="border border-orange-300 rounded-md mr-2 px-2">
+        #${tag}
+      </div>
+  `;
+  });
+  return structure;
 }
