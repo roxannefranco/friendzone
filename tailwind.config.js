@@ -12,5 +12,6 @@ module.exports = {
     "px-2",
     "w-8",
     "h-8",
+    "mt-4",
   ],
 };
