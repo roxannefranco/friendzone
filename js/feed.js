@@ -6,10 +6,12 @@ import {
   reactionGenerator,
   tagsGenerator,
   replaceAvatar,
+  replaceUserProfile,
 } from "./functions.js";
 
 checkNotAuth();
 replaceAvatar();
+replaceUserProfile();
 
 const signOutBtn = document.querySelector("#sign-out-btn");
 

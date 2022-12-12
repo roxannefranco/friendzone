@@ -93,3 +93,12 @@ export function tagsGenerator(tags) {
   });
   return structure;
 }
+
+/**
+ * Replace user's profile link
+ */
+export function replaceUserProfile() {
+  const user = getUser();
+  const profileLink = document.querySelector("#profile-link");
+  profileLink.href += `?name=${user.name}`;
+}
