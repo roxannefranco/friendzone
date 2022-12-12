@@ -10,5 +10,7 @@ module.exports = {
     "object-cover",
     "hover:bg-neutral-100",
     "px-2",
+    "w-8",
+    "h-8",
   ],
 };

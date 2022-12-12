@@ -58,9 +58,11 @@ async function userProfile(userInfo) {
 
   userInfo.followers.forEach(function (follower) {
     if (follower.avatar != "" && follower.avatar != null) {
-      avatarFollowers.innerHTML += `<img width="36" height="36" src="${follower.avatar}" class="rounded-full" />`;
+      avatarFollowers.innerHTML += `<img src="${follower.avatar}" class="rounded-full w-8 h-8 object-cover block" />`;
     } else {
-      avatarFollowers.innerHTML += `<img width="36" height="36" src="images/noavatar.jpg" class="rounded-full" />`;
+      avatarFollowers.innerHTML += `<img src="images/noavatar.jpg" class="rounded-full w-8 h-8 object-cover block" />`;
     }
   });
 }
+
+// fetch posts by user name
