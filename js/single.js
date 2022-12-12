@@ -77,6 +77,17 @@ function addPost(post) {
     ${reactionGenerator(post.reactions)}
     </div>
 </div>`;
+
+  const title = document.querySelector("#title-post");
+  const body = document.querySelector("#body-post");
+  const tags = document.querySelector("#tags-post");
+  const mediaField = document.querySelector("#media-post");
+
+  title.value = post.title;
+  body.value = post.body;
+  tags.value = post.tags.join(", ");
+
+  mediaField.value = post.media;
 }
 getPost();
 
@@ -102,5 +113,61 @@ deleteBtn.onclick = async function () {
       errorsList += `<p>${error.message}</p>`;
     });
     errors.innerHTML = errorsList;
+  }
+};
+
+const editBtn = document.querySelector("#edit-btn");
+const form = document.querySelector("#posts-form");
+const cancelBtn = document.querySelector("#cancel-btn");
+
+// edit and cancel buttons
+editBtn.onclick = function () {
+  form.classList.remove("hidden");
+};
+cancelBtn.onclick = function (e) {
+  e.preventDefault();
+  form.classList.add("hidden");
+};
+
+form.onsubmit = async function (event) {
+  event.preventDefault();
+  const errorsContainer = document.querySelector("#errors");
+  errorsContainer.classList.add("hidden");
+
+  const title = document.querySelector("#title-post");
+  const body = document.querySelector("#body-post");
+  const tags = document.querySelector("#tags-post");
+  const mediaField = document.querySelector("#media-post");
+
+  // split tags by comma and loop through each tag to trim extra spaces
+  const tagsList = tags.value.split(",").map(function (tag) {
+    return tag.trim();
+  });
+
+  const data = {
+    title: title.value,
+    body: body.value,
+    tags: tagsList,
+    media: mediaField.value,
+  };
+  const response = await fetch(`${url}/posts/${id}`, {
+    method: "PUT",
+    body: JSON.stringify(data),
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: getToken(),
+    },
+  });
+  const info = await response.json();
+  if ("errors" in info) {
+    const errors = document.querySelector("#errors");
+    errors.classList.remove("hidden");
+    let errorsList = "";
+    info.errors.forEach(function (error) {
+      errorsList += `<p>${error.message}</p>`;
+    });
+    errors.innerHTML = errorsList;
+  } else {
+    window.location.reload();
   }
 };

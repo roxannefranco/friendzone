@@ -71,20 +71,44 @@
             </div>
         </div>
     </nav>
-    <div class="w-full max-w-screen-md mx-auto px-4 mt-24">
-
-        <!-- Delete button -->
-        <div class="flex justify-end">
-            <button id="delete-btn"
-                class="bg-red-400 py-2 px-4 block rounded-md text-white font-bold mt-3 hover:bg-red-600 transition-all duration-200">Delete</button>
+    <div class="w-full max-w-screen-md mx-auto px-4">
+        <!-- EDIT AND DELETE BTNS -->
+        <div class="max-w-screen-md mx-auto px-4 mt-24">
+            <div class="flex justify-end">
+                <button id="edit-btn"
+                    class="bg-yellow-400 mr-2 py-2 px-4 block rounded-md text-white font-bold mt-3 hover:bg-yellow-600 transition-all duration-200">Edit</button>
+                <button id="delete-btn"
+                    class="bg-red-400 py-2 px-4 block rounded-md text-white font-bold mt-3 hover:bg-red-600 transition-all duration-200">Delete</button>
+            </div>
+            <div id="errors" class="hidden text-red-500 mt-3 font-bold"></div>
+            <!--POST FORM-->
+            <form id="posts-form" action="index.html" class="bg-neutral-200 p-4 mt-6 hidden">
+                <!--Title input-->
+                <input id="title-post" required type="text"
+                    class="w-full px-3 py-2 mb-2 rounded-md border border-neutral-300 focus:outline focus:outline-orange-100 focus:border-orange-300"
+                    placeholder="Title">
+                <textarea id="body-post" maxlength=" 280" rows="3"
+                    class="resize-none w-full px-3 py-2 mb-2 rounded-md border border-neutral-300 focus:outline focus:outline-orange-100 focus:border-orange-300"
+                    placeholder="What's on your mind..."></textarea>
+                <!--Tags input-->
+                <input id="tags-post" type="text"
+                    class="w-full px-3 py-2 mb-2 rounded-md border border-neutral-300 focus:outline focus:outline-orange-100 focus:border-orange-300"
+                    placeholder="Tags (optional, comma separated)">
+                <!--Media input-->
+                <input id="media-post" type="text"
+                    class="w-full px-3 py-2 mb-2 rounded-md border border-neutral-300 focus:outline focus:outline-orange-100 focus:border-orange-300"
+                    placeholder="Media URl (optional)">
+                <div id="errors"></div>
+                <button type="submit"
+                    class="bg-orange-300 py-3 px-6 inline-block rounded-md text-white font-bold mt-3 hover:bg-orange-500 transition-all duration-200">Save</button>
+                <button id="cancel-btn"
+                    class="bg-red-500 py-3 px-6 inline-block rounded-md text-white font-bold mt-3 hover:bg-red-800 transition-all duration-200">Cancel</button>
+            </form>
+            <!--POST-->
+            <div id="posts-container" class="mb-8">
+            </div>
         </div>
-        <div id="errors" class="hidden text-red-500 mt-3 font-bold"></div>
-        <!--POSTS-->
-        <div id="posts-container" class="mb-8">
-        </div>
-
-    </div>
-    <script type="module" src="js/single.js"></script>
+        <script type="module" src="js/single.js"></script>
 </body>
 
 </html>
