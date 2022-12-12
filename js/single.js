@@ -143,13 +143,14 @@ form.onsubmit = async function (event) {
   const tagsList = tags.value.split(",").map(function (tag) {
     return tag.trim();
   });
-
   const data = {
     title: title.value,
     body: body.value,
     tags: tagsList,
     media: mediaField.value,
   };
+
+  // Update my post
   const response = await fetch(`${url}/posts/${id}`, {
     method: "PUT",
     body: JSON.stringify(data),

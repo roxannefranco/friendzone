@@ -46,6 +46,16 @@ async function registerNew() {
   });
   const response = await info.json();
 
-  // if response is ok redirect to log in page
-  window.location.replace("/login.html");
+  if ("errors" in response) {
+    const errors = document.querySelector("#errors-server");
+    errors.classList.remove("hidden");
+    let errorsList = "";
+    response.errors.forEach(function (error) {
+      errorsList += `<p>${error.message}</p>`;
+    });
+    errors.innerHTML = errorsList;
+  } else {
+    // if response is ok redirect to log in page
+    window.location.replace("/login.html");
+  }
 }
