@@ -62,7 +62,7 @@ async function userProfile(userInfo) {
     if (follower.avatar != "" && follower.avatar != null) {
       avatarFollowers.innerHTML += `<a href="profile.html?name=${follower.name}"><img src="${follower.avatar}" class="rounded-full w-8 h-8 object-cover block" /></a>`;
     } else {
-      avatarFollowers.innerHTML += `<a/ href="profile.html?name=${follower.name}"<img src="images/noavatar.jpg" class="rounded-full w-8 h-8 object-cover block" /></a>`;
+      avatarFollowers.innerHTML += `<a href="profile.html?name=${follower.name}"><img src="images/noavatar.jpg" class="rounded-full w-8 h-8 object-cover block" /></a>`;
     }
   });
 }
