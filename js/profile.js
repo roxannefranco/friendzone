@@ -60,9 +60,9 @@ async function userProfile(userInfo) {
 
   userInfo.followers.forEach(function (follower) {
     if (follower.avatar != "" && follower.avatar != null) {
-      avatarFollowers.innerHTML += `<img src="${follower.avatar}" class="rounded-full w-8 h-8 object-cover block" />`;
+      avatarFollowers.innerHTML += `<a href="profile.html?name=${follower.name}"><img src="${follower.avatar}" class="rounded-full w-8 h-8 object-cover block" /></a>`;
     } else {
-      avatarFollowers.innerHTML += `<img src="images/noavatar.jpg" class="rounded-full w-8 h-8 object-cover block" />`;
+      avatarFollowers.innerHTML += `<a/ href="profile.html?name=${follower.name}"<img src="images/noavatar.jpg" class="rounded-full w-8 h-8 object-cover block" /><a/>`;
     }
   });
 }
