@@ -55,7 +55,7 @@ function addPosts(posts, ignoreTags = false) {
     // check if post has media to display
     let media = "";
     if (post.media !== "" && post.media != null) {
-      media = `<img class="mb-2 rounded-md" src="${post.media}">`;
+      media = `<img class="mb-2 rounded-md h-auto w-full" src="${post.media}">`;
     }
 
     // check tags used on the post

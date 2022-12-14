@@ -13,5 +13,7 @@ module.exports = {
     "w-8",
     "h-8",
     "mt-4",
+    "h-auto",
+    "w-full",
   ],
 };

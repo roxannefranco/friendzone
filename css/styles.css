@@ -639,6 +639,10 @@ video {
   height: 2rem;
 }
 
+.h-auto {
+  height: auto;
+}
+
 .h-10 {
   height: 2.5rem;
 }

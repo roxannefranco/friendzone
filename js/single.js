@@ -7,6 +7,7 @@ import {
   tagsGenerator,
   replaceAvatar,
   replaceUserProfile,
+  getUser,
 } from "./functions.js";
 
 checkNotAuth();
@@ -59,6 +60,12 @@ function addPost(post) {
   let media = "";
   if (post.media !== "" && post.media != null) {
     media = `<img class="mb-2 rounded-md" src="${post.media}">`;
+  }
+
+  const loggedUser = getUser();
+  if (loggedUser.name === post.author.name) {
+    const btns = document.querySelector("#btns");
+    btns.classList.remove("hidden");
   }
 
   postContainer.innerHTML += `<div class="mt-4 border border-neutral-300 rounded-md p-3">
