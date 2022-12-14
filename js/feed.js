@@ -85,7 +85,7 @@ function addPosts(posts, ignoreTags = false) {
     }" class="block mt-4 border border-neutral-300 hover:bg-neutral-100 rounded-md p-3">
       <div class="flex items-center">
           <img width="32" height="32" src="${avatar}" class="rounded-full mr-2 object-cover w-10 h-10" />
-          <div class="font-bold">@${post.author.name}</div>
+          <div class="text-neutral-800 font-bold">@${post.author.name}</div>
       </div>
       <p class="text-neutral-800 mt-2 font-medium text-lg">${post.title}</p>
       <p class="text-neutral-600 mb-2">${post.body}</p>
