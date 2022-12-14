@@ -19,6 +19,7 @@ const signOutBtn = document.querySelector("#sign-out-btn");
 signOutBtn.onclick = signOut;
 
 let allPosts = [];
+let term = "";
 
 /**
  * Fetch posts
@@ -40,7 +41,7 @@ async function getPosts() {
  * Adding posts to HTML
  * @param {array} posts
  */
-function addPosts(posts, fromTags = false) {
+function addPosts(posts, ignoreTags = false) {
   const postContainer = document.querySelector("#posts-container");
   postContainer.innerHTML = "";
   let sortedTags = [];
@@ -58,7 +59,7 @@ function addPosts(posts, fromTags = false) {
     }
 
     // check tags used on the post
-    if (!fromTags) {
+    if (!ignoreTags) {
       post.tags.map(function (tag) {
         if (tag != "" && tag != null) {
           const foundTag = sortedTags.find(function (t) {
@@ -98,7 +99,7 @@ function addPosts(posts, fromTags = false) {
     </a>`;
   });
 
-  if (!fromTags) {
+  if (!ignoreTags) {
     sortedTags = sortedTags.sort(function (a, b) {
       if (a.total > b.total) return -1;
       if (a.total < b.total) return 1;
@@ -165,18 +166,19 @@ async function newPost() {
 const search = document.querySelector("#search");
 search.oninput = function () {
   // convert all searches to lower case
-  const term = search.value.toLowerCase();
+  term = search.value.toLowerCase();
   if (term != "") {
     const filteredPosts = allPosts.filter(function (post) {
       // check if post title includes term and returns true if yes and false if no
       return (
         post.title.toLowerCase().includes(term) ||
-        (post.body != null && post.body.toLowerCase().includes(term))
+        (post.body != null && post.body.toLowerCase().includes(term)) ||
+        post.author.name.toLowerCase().includes(term)
       );
     });
-    addPosts(filteredPosts);
+    addPosts(filteredPosts, true);
   } else {
-    addPosts(allPosts);
+    addPosts(allPosts, true);
   }
 };
 
@@ -191,7 +193,7 @@ tagFilter.onchange = function () {
  * Get posts by tag
  */
 async function getPostsByTag(tag) {
-  //check if selected tag is 0
+  // check if selected tag is 0
   let queryParam = "";
   if (tag != 0) {
     queryParam = `&_tag=${tag}`;
@@ -209,5 +211,17 @@ async function getPostsByTag(tag) {
   );
   const data = await response.json();
   allPosts = data;
-  addPosts(allPosts, true);
+  if (term != "") {
+    const filteredPosts = allPosts.filter(function (post) {
+      // check if post title includes term and returns true if yes and false if no
+      return (
+        post.title.toLowerCase().includes(term) ||
+        (post.body != null && post.body.toLowerCase().includes(term)) ||
+        post.author.name.toLowerCase().includes(term)
+      );
+    });
+    addPosts(filteredPosts, true);
+  } else {
+    addPosts(allPosts, true);
+  }
 }
