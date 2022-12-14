@@ -40,9 +40,10 @@ async function getPosts() {
  * Adding posts to HTML
  * @param {array} posts
  */
-function addPosts(posts) {
+function addPosts(posts, fromTags = false) {
   const postContainer = document.querySelector("#posts-container");
   postContainer.innerHTML = "";
+  let sortedTags = [];
   posts.forEach(function (post) {
     // check if user uploaded avatar
     let avatar = "images/noavatar.jpg";
@@ -56,13 +57,34 @@ function addPosts(posts) {
       media = `<img class="mb-2 rounded-md" src="${post.media}">`;
     }
 
+    // check tags used on the post
+    if (!fromTags) {
+      post.tags.map(function (tag) {
+        if (tag != "" && tag != null) {
+          const foundTag = sortedTags.find(function (t) {
+            return t.tag === tag;
+          });
+          if (foundTag != null) {
+            // exists then check its position
+            const key = Object.keys(sortedTags).find(function (k) {
+              return sortedTags[k].tag === tag;
+            });
+            sortedTags[key].total += 1;
+          } else {
+            //does not exist then add
+            sortedTags.push({ tag: tag, total: 1 });
+          }
+        }
+      });
+    }
+
     postContainer.innerHTML += `
     <a href="single.html?id=${
       post.id
     }" class="block mt-4 border border-neutral-300 hover:bg-neutral-100 rounded-md p-3">
       <div class="flex items-center">
           <img width="32" height="32" src="${avatar}" class="rounded-full mr-2 object-cover w-10 h-10" />
-          <div class="font-bold">${post.author.name}</div>
+          <div class="font-bold">@${post.author.name}</div>
       </div>
       <p class="text-neutral-800 mt-2 font-medium text-lg">${post.title}</p>
       <p class="text-neutral-600 mb-2">${post.body}</p>
@@ -75,6 +97,19 @@ function addPosts(posts) {
       </div>
     </a>`;
   });
+
+  if (!fromTags) {
+    sortedTags = sortedTags.sort(function (a, b) {
+      if (a.total > b.total) return -1;
+      if (a.total < b.total) return 1;
+      return 0;
+    });
+    const topTags = sortedTags.slice(0, 5);
+    const selectTags = document.querySelector("#tag-filter");
+    topTags.forEach(function (tag) {
+      selectTags.innerHTML += `<option value="${tag.tag}">${tag.tag}</option>`;
+    });
+  }
 }
 
 getPosts();
@@ -149,19 +184,21 @@ search.oninput = function () {
 const tagFilter = document.querySelector("#tag-filter");
 tagFilter.onchange = function () {
   const selectedTag = tagFilter.value;
-  if (selectedTag == 0) {
-    getPosts();
-  } else {
-    getPostsByTag(selectedTag);
-  }
+  getPostsByTag(selectedTag);
 };
 
 /**
  * Get posts by tag
  */
 async function getPostsByTag(tag) {
+  //check if selected tag is 0
+  let queryParam = "";
+  if (tag != 0) {
+    queryParam = `&_tag=${tag}`;
+  }
+
   const response = await fetch(
-    `${url}/posts?_author=true&_reactions=true&_tag=${tag}`,
+    `${url}/posts?_author=true&_reactions=true${queryParam}`,
     {
       method: "GET",
       headers: {
@@ -172,5 +209,5 @@ async function getPostsByTag(tag) {
   );
   const data = await response.json();
   allPosts = data;
-  addPosts(allPosts);
+  addPosts(allPosts, true);
 }
