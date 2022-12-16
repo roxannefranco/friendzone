@@ -15,5 +15,6 @@ module.exports = {
     "mt-4",
     "h-auto",
     "w-full",
+    "flex-wrap",
   ],
 };

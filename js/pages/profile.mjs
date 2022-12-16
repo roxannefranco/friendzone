@@ -81,7 +81,7 @@ export default function runProfile() {
       <p class="text-neutral-800 mt-2 font-medium text-lg">${title}</p>
       <p class="text-neutral-600 mb-2">${body}</p>
       ${img}
-      <div class="flex items-center mb-2">
+      <div class="flex flex-wrap items-center mb-2">
         ${tagsGenerator(tags)}
       </div>
       <div class="flex items-center">
