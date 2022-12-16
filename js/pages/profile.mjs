@@ -68,6 +68,7 @@ export default function runProfile() {
 
     // adding user posts to user profile
     const userPosts = document.querySelector("#user-posts");
+    userPosts.innerHTML = "";
     info.forEach(function (post) {
       const { media, id, title, body, tags, reactions } = post;
       // check if post has media to display
