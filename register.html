@@ -69,9 +69,10 @@
                     <path stroke-linecap="round"
                         d="M16.5 12a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0zm0 0c0 1.657 1.007 3 2.25 3S21 13.657 21 12a9 9 0 10-2.636 6.364M16.5 12V8.25" />
                 </svg>
-                <input required type="email"
+                <input id="email-login" required type="email" pattern="^[\w\-.]+@(stud.)?noroff.no$"
+                    title="email@noroff.no / email@stud.noroff.no / email@noroff.no"
                     class="w-full pl-10 pr-3 py-2 mb-2 rounded-md border border-neutral-300 focus:outline focus:outline-orange-100 focus:border-orange-300"
-                    id="email" placeholder="Email">
+                    placeholder="Email">
             </div>
             <!--Avatar input-->
             <div class="relative">

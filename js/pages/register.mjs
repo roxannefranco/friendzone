@@ -30,7 +30,7 @@ export default function runRegister() {
    */
   async function registerNew() {
     const username = document.querySelector("#username");
-    const email = document.querySelector("#email");
+    const email = document.querySelector("#email-login");
     const avatar = document.querySelector("#avatar");
     const password = document.querySelector("#password");
     const data = {
