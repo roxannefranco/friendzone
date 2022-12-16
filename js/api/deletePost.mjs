@@ -4,7 +4,6 @@ import { getToken } from "../functions.mjs";
 /**
  * Delete a post
  * @param {string} id
- * @returns
  */
 export default async function deletePost(id) {
   try {
@@ -18,6 +17,7 @@ export default async function deletePost(id) {
     const data = await response.json();
     return data;
   } catch (e) {
-    console.log(e);
+    console.warn(e);
+    alert("There was a problem deleting this post.")
   }
 }
