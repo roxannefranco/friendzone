@@ -4,7 +4,6 @@ import { getToken } from "../functions.mjs";
 /**
  * Delete a post
  * @param {string} id
- * @returns
  */
 export default async function deletePost(id) {
   try {
