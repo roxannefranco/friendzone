@@ -16,5 +16,6 @@ module.exports = {
     "h-auto",
     "w-full",
     "flex-wrap",
+    "loader",
   ],
 };
