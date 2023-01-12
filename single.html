@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Friendzone | Roxanne Franco Profile</title>
+    <title>Friendzone | Post</title>
     <link rel="stylesheet" href="css/styles.css" />
 </head>
 
@@ -73,40 +73,42 @@
         </div>
     </nav>
     <div class="w-full max-w-screen-md mx-auto px-4">
-        <div class="mt-24 sm:flex gap-x-4">
-            <!--LEFT COlUMN-->
-            <div class="flex-auto w-full sm:w-4/12">
-                <div class="text-center">
-                    <img id="user-avatar" width="170" height="170" src="/images/noavatar.jpg" alt="no avatar image"
-                        class="rounded-full inline-block w-48 h-48 object-cover" />
-                    <h1 id="user-name" class="font-bold text-lg mt-3"></h1>
-                    <h2 id="user-followers" class="mb-3"></h2>
-                </div>
-                <div class="border border-neutral-300 rounded-md mt-6 p-3">
-                    <div class="flex">
-                        <div class="w-6 block">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                stroke="currentColor" class="w-6 h-6">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
-                            </svg>
-                        </div>
-                        <p id="user-email" class="ml-2 text-sm break-words"></p>
-                    </div>
-                </div>
-                <div class="border border-neutral-300 rounded-md mt-6 p-3 mb-4 sm:mb-0">
-                    <p class="font-bold">Followers</p>
-                    <div id="avatar-followers" class="flex flex-wrap gap-2 mt-2">
-                    </div>
-                </div>
+        <!-- EDIT AND DELETE BTNS -->
+        <div class="max-w-screen-md mx-auto px-4 mt-24">
+            <div id="btns" class="flex justify-end hidden">
+                <button id="edit-btn"
+                    class="bg-yellow-400 mr-2 py-2 px-4 block rounded-md text-white font-bold mt-3 hover:bg-yellow-600 transition-all duration-200">Edit</button>
+                <button id="delete-btn"
+                    class="bg-red-400 py-2 px-4 block rounded-md text-white font-bold mt-3 hover:bg-red-600 transition-all duration-200">Delete</button>
             </div>
-            <!--RIGHT COLUMN-->
-            <div id="user-posts" class="flex-auto w-full sm:w-8/12">
-                <div class="loader"></div>
+            <div id="errors" class="hidden text-red-500 mt-3 font-bold"></div>
+            <!--POSTS FORM-->
+            <form id="posts-form" action="index.html" class="bg-neutral-200 p-4 mt-6 hidden">
+                <!--Title input-->
+                <input id="title-post" required type="text"
+                    class="w-full px-3 py-2 mb-2 rounded-md border border-neutral-300 focus:outline focus:outline-orange-100 focus:border-orange-300"
+                    placeholder="Title">
+                <textarea id="body-post" maxlength=" 280" rows="3"
+                    class="resize-none w-full px-3 py-2 mb-2 rounded-md border border-neutral-300 focus:outline focus:outline-orange-100 focus:border-orange-300"
+                    placeholder="What's on your mind..."></textarea>
+                <!--Tags input-->
+                <input id="tags-post" type="text"
+                    class="w-full px-3 py-2 mb-2 rounded-md border border-neutral-300 focus:outline focus:outline-orange-100 focus:border-orange-300"
+                    placeholder="Tags (optional, comma separated)">
+                <!--Media input-->
+                <input id="media-post" type="text"
+                    class="w-full px-3 py-2 mb-2 rounded-md border border-neutral-300 focus:outline focus:outline-orange-100 focus:border-orange-300"
+                    placeholder="Media URl (optional)">
+                <button type="submit"
+                    class="bg-orange-300 py-3 px-6 inline-block rounded-md text-white font-bold mt-3 hover:bg-orange-500 transition-all duration-200">Save</button>
+                <button id="cancel-btn"
+                    class="bg-red-500 py-3 px-6 inline-block rounded-md text-white font-bold mt-3 hover:bg-red-800 transition-all duration-200">Cancel</button>
+            </form>
+            <!--POST-->
+            <div id="posts-container" class="mb-8">
             </div>
         </div>
-    </div>
-    <script type="module" src="js/index.mjs"></script>
+        <script type="module" src="js/index.mjs"></script>
 </body>
 
 </html>

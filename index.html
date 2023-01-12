@@ -53,17 +53,18 @@
                 </a>
                 <form class="hidden sm:inline-block" role="search">
                     <!--Search bar-->
-                    <input id="search" class="rounded ml-3 px-3 py-1" type="search" placeholder="Search"
-                        aria-label="Search">
+                    <input id="search" autocomplete="off" class="rounded ml-3 px-3 py-1" type="search"
+                        placeholder="Search" aria-label="Search">
                 </form>
                 <div class="ml-auto relative group">
-                    <div class="py-4" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img id="current-avatar" width="36" height="36" src="images/noavatar.jpg"
-                            class="rounded-full object-cover w-10 h-10" />
+                    <div class="py-4" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img id="current-avatar" width="36" height="36" alt="user profile image"
+                            src="images/noavatar.jpg" class="rounded-full object-cover w-10 h-10" />
                     </div>
                     <ul
                         class="absolute bg-white rounded border right-0 z-10 w-48 origin-top-right shadow-lg py-2 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto">
-                        <li><a class="text-gray-700 block px-4 py-2 text-sm hover:bg-neutral-200 transition-all duration-200"
+                        <li><a id="profile-link"
+                                class="text-gray-700 block px-4 py-2 text-sm hover:bg-neutral-200 transition-all duration-200"
                                 href="profile.html">Profile</a></li>
                         <li>
                             <button id="sign-out-btn"
@@ -93,7 +94,7 @@
             <!--Media input-->
             <input id="media-post" type="text"
                 class="w-full px-3 py-2 mb-2 rounded-md border border-neutral-300 focus:outline focus:outline-orange-100 focus:border-orange-300"
-                placeholder="Media URl (optional)">
+                placeholder="Media URL (optional)">
             <div id="errors"></div>
             <button type="submit"
                 class="bg-orange-300 py-3 px-6 inline-block rounded-md text-white font-bold mt-3 hover:bg-orange-500 transition-all duration-200">Publish</button>
@@ -101,23 +102,17 @@
         <!--TAG FILTERS-->
         <div class="mt-8">
             <label>Filter by Popular tags:</label>
-            <select id="tag-filter"
+            <select autocomplete="off" id="tag-filter"
                 class="px-3 py-2 mb-2 ml-2 rounded-md border border-neutral-300 focus:outline focus:outline-orange-100 focus:border-orange-300">
-                <option value="0">None</option>
-                <option value="coding">#coding</option>
-                <option value="friends">#friends</option>
-                <option value="meets">#meets</option>
-                <option value="sports">#sports</option>
-                <option value="science">#science</option>
+                <option value="0" selected>None</option>
             </select>
         </div>
-
         <!--POSTS-->
-        <div id="posts-container">
+        <div id="posts-container" class="mb-8">
+            <div class="loader"></div>
         </div>
-
     </div>
-    <script type="module" src="js/feed.js"></script>
+    <script type="module" src="js/index.mjs"></script>
 </body>
 
 </html>
